@@ -1,0 +1,19 @@
+current directory: /home/thiendh/thien/porfolio/vendor/bundle/ruby/3.2.0/gems/debug-1.10.0/ext/debug
+/home/thiendh/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/thiendh/thien/porfolio/vendor/bundle/ruby/3.2.0/gems/debug-1.10.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250108-39119-in6hzc sitelibdir\=./.gem.20250108-39119-in6hzc clean
+
+current directory: /home/thiendh/thien/porfolio/vendor/bundle/ruby/3.2.0/gems/debug-1.10.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250108-39119-in6hzc sitelibdir\=./.gem.20250108-39119-in6hzc
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/thiendh/thien/porfolio/vendor/bundle/ruby/3.2.0/gems/debug-1.10.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250108-39119-in6hzc sitelibdir\=./.gem.20250108-39119-in6hzc install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20250108-39119-in6hzc/debug
+
+current directory: /home/thiendh/thien/porfolio/vendor/bundle/ruby/3.2.0/gems/debug-1.10.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250108-39119-in6hzc sitelibdir\=./.gem.20250108-39119-in6hzc clean
