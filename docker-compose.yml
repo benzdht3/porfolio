@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:8.0.32
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    platform: linux/x86_64
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "33061:3306"
+
+  app:
+    platform: linux/x86_64
+    stdin_open: true
+    tty: true
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.dev
+    command: sh /docker-entrypoint.sh
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      DATABASE_PASSWORD: root
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USER: root
+      GOOGLE_APPLICATION_CREDENTIALS: /workspace/credentials.json
+    depends_on:
+      - db
+    volumes:
+      - .:/workspace
+      - bundle:/workspace/vendor/bundle
+volumes:
+  bundle:
+  db_data:
