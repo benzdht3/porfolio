@@ -1,0 +1,86 @@
+header#header.header.dark-background.d-flex.flex-column
+  i.header-toggle.d-xl-none.bi.bi-list
+
+  .profile-img
+    = image_tag 'me.jpg', class: 'img img-fluid rounded-circle', alt: 'Tian'
+
+  = link_to root_path, class: 'a logo d-flex align-items-center justify-content-center' do
+    / img src='assets/img/logo.png' alt=''
+    h1.sitename Tian
+
+  .social-links.text-center
+    a.twitter href='#'
+      i.bi.bi-twitter-x
+    a.facebook href='#'
+      i.bi.bi-facebook
+    a.instagram href='#'
+      i.bi.bi-instagram
+    a.google-plus href='#'
+      i.bi.bi-skype
+    a.linkedin href='#'
+      i.bi.bi-linkedin
+
+  nav#navmenu.navmenu
+    ul
+      li
+        a.active href='#hero'
+          i.bi.bi-house.navicon
+          | Home
+      li
+        a href='#about'
+          i.bi.bi-person.navicon
+          | About
+      li
+        a href='#resume'
+          i.bi.bi-file-earmark-text.navicon
+          | Resume
+      li
+        a href='#portfolio'
+          i.bi.bi-images.navicon
+          | Portfolio
+      li
+        a href='#services'
+          i.bi.bi-hdd-stack.navicon
+          | Services
+      li.dropdown
+        a href='#'
+          i.bi.bi-menu-button.navicon
+          | Dropdown
+          i.bi.bi-chevron-down.toggle-dropdown
+        ul
+          li
+            a href='#'
+              | Dropdown 1
+          li.dropdown
+            a href='#'
+              | Deep Dropdown
+              i.bi.bi-chevron-down.toggle-dropdown
+            ul
+              li
+                a href='#'
+                  | Deep Dropdown 1
+              li
+                a href='#'
+                  | Deep Dropdown 2
+              li
+                a href='#'
+                  | Deep Dropdown 3
+              li
+                a href='#'
+                  | Deep Dropdown 4
+              li
+                a href='#'
+                  | Deep Dropdown 5
+          li
+            a href='#'
+              | Dropdown 2
+          li
+            a href='#'
+              | Dropdown 3
+          li
+            a href='#'
+              | Dropdown 4
+      li
+        a href='#contact'
+          i.bi.bi-envelope.navicon
+          | Contact
