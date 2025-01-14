@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile.dev
     command: sh /docker-entrypoint.sh
     ports:
-      - "3000:3000"
+      - "3333:3000"
     environment:
       RAILS_ENV: development
       DATABASE_PASSWORD: root
