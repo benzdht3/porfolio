@@ -1,0 +1,54 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  .item {
+    flex: 1 1 calc(25% - 1rem); /* 4 cards per row, accounting for gap */
+    background-color: transparent;
+    box-sizing: border-box;
+    transition: transform 0.2s;
+    .title-price {
+      display: flex;
+      border-radius: 8px 8px 0 0;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      background-color: #ddd;
+    }
+    .title {
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    .price {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    img {
+      inset: 0;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0 0 8px 8px;
+    }
+  }
+
+  .item:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+  /* Responsive behavior */
+  @media (max-width: 1024px) {
+    .item {
+      flex: 1 1 calc(25% - 1rem); /* 2 per row on tablets */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .item {
+      flex: 1 1 100%; /* Full width on mobile */
+    }
+  }
+}

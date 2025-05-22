@@ -244,7 +244,7 @@ body {
 .navmenu a:hover,
 .navmenu .active,
 .navmenu .active:focus {
-  color: var(--nav-hover-color);
+  color: var(--nav-mobile-background-color);
 }
 
 .navmenu a:hover .navicon,
@@ -417,7 +417,6 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
   overflow: clip;
 }
 
