@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  get "items/:category" => "items#index", as: :items
+  post "items" => "items#create", as: :items_create
 end

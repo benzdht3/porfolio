@@ -1,5 +1,21 @@
 / Hero Section
 section#hero.hero.section.light-background
+  .modal-overlay.d-none
+    .add-items-modal
+      = form_with url: items_create_path, method: :post, data: { controller: 'items' } do |f|
+        .add-img
+          .img-box
+            f.file_field :image
+            .text.bi.bi-paperclip.navicon = '   Thêm ảnh'
+        .add-content
+          input type='text' placeholder='Tên'
+        .add-content
+          input type='text' placeholder='Giá'
+        .add-submit
+          .btn-submit OK
+  .btn-list data-controller='items'
+    .add-btn data-action='click->items#addItem'
+      .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng'
   .item-list
     .item
       .title-price

@@ -16,4 +16,6 @@
  *= require global
  *= require sections
  *= require card_list
+ *= require modal
+ *= require btn_list
  */

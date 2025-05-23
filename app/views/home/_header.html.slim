@@ -10,6 +10,14 @@ header#header.header.light-background.d-flex.flex-column
   nav#navmenu.navmenu
     ul
       li
-        a.active href='#hero'
-          i.bi.bi-house.navicon
-          | Home
+        = link_to items_path('drink'), class: 'active' do
+          i.bi.bi-cup-straw.navicon
+          | Nước uống
+      li
+        = link_to items_path('food'), class: 'active' do
+          i.bi.bi-fork-knife.navicon
+          | Thức ăn
+      li
+        = link_to items_path('topping'), class: 'active' do
+          i.bi.bi-egg-fried.navicon
+          | Topping

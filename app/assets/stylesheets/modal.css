@@ -1,0 +1,60 @@
+.modal-overlay {
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000000ab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .add-items-modal {
+    border-radius: 8px;
+    background-color: white;
+    z-index: 2;
+    height: 50%;
+    width: 50%;
+    .add-img {
+      height: 50%;
+      padding: 20px;
+      .img-box {
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        height: 100%;
+        width: 100%;
+        .text {
+          height: 100%;
+          text-align: center;
+          align-content: center;
+        }
+        .text:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .add-content {
+      height: 15%;
+      padding: 10px 100px;
+      input {
+        text-align: center;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .add-submit {
+      padding: 10px 200px 30px;
+      height: 20%;
+      .btn-submit {
+        height: 100%;
+        width: 100%;
+        background-color: pink;
+        border-radius: 8px;
+        text-align: center;
+        align-content: center;
+      }
+      .btn-submit:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+      }
+    }
+  }
+}
