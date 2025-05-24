@@ -13,6 +13,30 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_edit_params)
+      @item.image.attach(item_edit_params[:image]) if item_edit_params[:image].present?
+      redirect_to root_path
+    else
+      redirect_to root_path, alert: 'Cập nhật hàng thất bại'
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.image.purge if @item.image.attached?
+    @item.destroy!
+
+    redirect_to root_path
+  end
+
+  def ajax_open_edit
+    @item = Item.find(params[:id])
+
+    render partial: 'items/edit_item_modal', locals: { item: @item }
+  end
+
   private
 
   def item_params
@@ -23,5 +47,11 @@ class ItemsController < ApplicationController
     @item_params[:category] = params[:category] || 'drink'
 
     @item_params
+  end
+
+  def item_edit_params
+    @item_edit_params ||= params.require(:item).permit(:name, :cost, :image, :price)
+
+    @item_edit_params
   end
 end

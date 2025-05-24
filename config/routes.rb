@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   root "home#index"
   get "items/:category" => "items#index", as: :items
   post "items" => "items#create", as: :items_create
+  delete "items/destroy/:id" => "items#destroy", as: :items_destroy
+  patch "items/:id" => "items#update", as: :items_update
+  get "items/ajax_open_edit/:id" => "items#ajax_open_edit", as: :items_ajax_open_edit
 end

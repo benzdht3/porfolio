@@ -1,29 +1,13 @@
 / Hero Section
 section#hero.hero.section.light-background
   .modal-overlay.d-none
-    .add-items-modal
-      = form_with model: Item.new, url: items_create_path, method: :post, data: { controller: 'items' }, class: 'add-items-form' do |f|
-        .add-img
-          .img-box data-action="click->items#triggerFile" data-items-target="imgBox"
-            = f.file_field :image, class: 'd-none', data: { items_target: 'fileInput', action: 'change->items#previewImage' }
-            img src="" alt="Preview" class="img-preview d-none" data-items-target="imgPreview"
-            .text.bi.bi-paperclip.navicon = '   Thêm ảnh'
-        .add-content
-          = f.text_field :name, placeholder: 'Tên'
-        .add-content.with-two
-          = f.number_field :cost, placeholder: 'Giá nhập', class: 'with-two'
-          .slash = '/'
-          = f.number_field :quantity, placeholder: 'Số lượng 1 thùng', class: 'with-two'
-        .add-content
-          = f.number_field :price, placeholder: 'Giá bán'
-        .add-submit
-          = f.submit 'OK', class: 'btn-submit'
+    = render 'items/add_item_modal'
   .btn-list data-controller='items'
     .add-btn data-action='click->items#addItem'
       .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng mới'
   .item-list
     - @items.each do |item|
-      .item
+      .item data-controller='items' data-action='click->items#openEditItem' data-items-id-param=item.id
         .title-price
           .title = item.name
           .price = "SL: #{item.quantity}"

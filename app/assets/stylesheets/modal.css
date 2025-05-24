@@ -83,6 +83,54 @@
         }
       }
     }
-
+    &#edit-item-modal {
+      .add-content {
+        font-weight: bold;
+        font-size: 23px;
+        justify-content: center;
+        padding: 10px 50px;
+      }
+      .item-name {
+        padding: 0 10px;
+        border-radius: 8px;
+        text-align: center;
+        align-content: center;
+        background-color: #ddd;
+      }
+      .item-edit {
+        margin-left: 10px;
+        align-content: center;
+        &:hover {
+          font-weight: bold;
+          transform: scale(1.2);
+          cursor: pointer;
+        }
+      }
+      .item-edit-hidden {
+        margin-right: 10px;
+        visibility: hidden;
+      }
+      .submit-btns {
+        font-weight: bold;
+        padding: 15px 10px;
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .add-submit {
+          height: 100%;
+          width: 40%;
+          padding: 0;
+          .btn-submit {
+            display: block;
+            a& {
+              text-decoration: none;
+              color: black !important;
+              background-color: #e10000 !important;
+            }
+          }
+        }
+      }
+    }
   }
 }

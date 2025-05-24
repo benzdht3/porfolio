@@ -1,0 +1,17 @@
+.add-items-modal
+  = form_with model: Item.new, url: items_create_path, method: :post, data: { controller: 'items' }, class: 'add-items-form' do |f|
+    .add-img
+      .img-box data-action="click->items#triggerFile" data-items-target="imgBox"
+        = f.file_field :image, class: 'd-none', data: { items_target: 'fileInput', action: 'change->items#previewImage' }
+        img src="" alt="Preview" class="img-preview d-none" data-items-target="imgPreview"
+        .text.bi.bi-paperclip.navicon = '   Thêm ảnh'
+    .add-content
+      = f.text_field :name, placeholder: 'Tên'
+    .add-content.with-two
+      = f.number_field :cost, placeholder: 'Giá nhập', class: 'with-two'
+      .slash = '/'
+      = f.number_field :quantity, placeholder: 'Số lượng 1 thùng', class: 'with-two'
+    .add-content
+      = f.number_field :price, placeholder: 'Giá bán'
+    .add-submit
+      = f.submit 'OK', class: 'btn-submit'
