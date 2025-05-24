@@ -5,7 +5,7 @@
   padding: 1rem;
   box-sizing: border-box;
   width: 100%;
-  .item {
+  .item, .item-blank {
     flex: 1 1 calc(25% - 1rem); /* 4 cards per row, accounting for gap */
     background-color: transparent;
     box-sizing: border-box;

@@ -2,58 +2,36 @@
 section#hero.hero.section.light-background
   .modal-overlay.d-none
     .add-items-modal
-      = form_with url: items_create_path, method: :post, data: { controller: 'items' } do |f|
+      = form_with model: Item.new, url: items_create_path, method: :post, data: { controller: 'items' }, class: 'add-items-form' do |f|
         .add-img
-          .img-box
-            f.file_field :image
+          .img-box data-action="click->items#triggerFile" data-items-target="imgBox"
+            = f.file_field :image, class: 'd-none', data: { items_target: 'fileInput', action: 'change->items#previewImage' }
+            img src="" alt="Preview" class="img-preview d-none" data-items-target="imgPreview"
             .text.bi.bi-paperclip.navicon = '   Thêm ảnh'
         .add-content
-          input type='text' placeholder='Tên'
+          = f.text_field :name, placeholder: 'Tên'
+        .add-content.with-two
+          = f.number_field :cost, placeholder: 'Giá nhập', class: 'with-two'
+          .slash = '/'
+          = f.number_field :quantity, placeholder: 'Số lượng 1 thùng', class: 'with-two'
         .add-content
-          input type='text' placeholder='Giá'
+          = f.number_field :price, placeholder: 'Giá bán'
         .add-submit
-          .btn-submit OK
+          = f.submit 'OK', class: 'btn-submit'
   .btn-list data-controller='items'
     .add-btn data-action='click->items#addItem'
-      .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng'
+      .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng mới'
   .item-list
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
-    .item
-      .title-price
-        .title Sting dâu
-        .price 13.000đ
-      = image_tag 'sting.webp'
+    - @items.each do |item|
+      .item
+        .title-price
+          .title = item.name
+          .price = "SL: #{item.quantity}"
+        = image_tag item.image if item.image.attached?
+    - if @items.size%4 != 0
+      - (4 - @items.size%4).times do
+        .item-blank
+          .title-price
+            .title = ''
+            .price = ''
+          = image_tag ''
