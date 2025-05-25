@@ -4,20 +4,19 @@ header#header.header.light-background.d-flex.flex-column
     = image_tag 'nkt.jpg', class: 'img img-fluid rounded-circle', alt: 'Tian'
 
   = link_to root_path, class: 'a logo d-flex align-items-center justify-content-center' do
-    / img src='assets/img/logo.png' alt=''
     h1.sitename NKT
 
   nav#navmenu.navmenu
-    ul
+    ul data-controller='header' data-header-category-value=params[:category]
       li
-        = link_to items_path('drink'), class: 'active' do
+        = link_to items_path('drink'), id: 'drink', data: { controller: 'header' } do
           i.bi.bi-cup-straw.navicon
           | Nước uống
       li
-        = link_to items_path('food'), class: 'active' do
+        = link_to items_path('food'), id: 'food', data: { controller: 'header' } do
           i.bi.bi-fork-knife.navicon
           | Thức ăn
       li
-        = link_to items_path('topping'), class: 'active' do
+        = link_to items_path('topping'), id: 'topping', data: { controller: 'header' } do
           i.bi.bi-egg-fried.navicon
           | Topping

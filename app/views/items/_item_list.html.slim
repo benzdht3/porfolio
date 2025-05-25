@@ -1,0 +1,19 @@
+.item-list
+  - items.each do |item|
+    .item data-controller='items' data-action='click->items#openEditItem' data-items-id-param=item.id
+      .title-price
+        .title = item.name
+        .price = "SL: #{item.quantity}"
+      = image_tag item.image if item.image.attached?
+      .quantity-btn data-action='click->items#quantityClick' data-items-id-param=item.id
+        = form_with url: items_update_quantity_path(item.id), method: :patch, class: 'quantity-form' do |f|
+          = f.number_field :quantity, placeholder: '+/- số lượng'
+          .quantity-submit
+            = f.submit 'Sửa SL', class: 'quantity-submit'
+  - if items.size%4 != 0
+    - (4 - items.size%4).times do
+      .item-blank
+        .title-price
+          .title = ''
+          .price = ''
+        = image_tag ''

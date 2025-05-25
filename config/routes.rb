@@ -11,9 +11,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  get "items/ajax_open_add/:category" => "items#ajax_open_add", as: :items_ajax_open_add
+  get "items/ajax_open_edit/:id" => "items#ajax_open_edit", as: :items_ajax_open_edit
+
   get "items/:category" => "items#index", as: :items
   post "items" => "items#create", as: :items_create
   delete "items/destroy/:id" => "items#destroy", as: :items_destroy
   patch "items/:id" => "items#update", as: :items_update
-  get "items/ajax_open_edit/:id" => "items#ajax_open_edit", as: :items_ajax_open_edit
+  patch "items/update_quantity/:id" => "items#update_quantity", as: :items_update_quantity
 end

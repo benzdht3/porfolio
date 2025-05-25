@@ -63,6 +63,9 @@
         input[type="number"]::-webkit-outer-spin-button {
           -webkit-appearance: none;
           margin: 0;
+          pointer-events: none;
+          -moz-appearance: textfield;
+          appearance: none;
         }
       }
       .add-submit {

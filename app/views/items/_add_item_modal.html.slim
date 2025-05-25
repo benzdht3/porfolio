@@ -13,5 +13,6 @@
       = f.number_field :quantity, placeholder: 'Số lượng 1 thùng', class: 'with-two'
     .add-content
       = f.number_field :price, placeholder: 'Giá bán'
+    = f.hidden_field :category, value: category
     .add-submit
       = f.submit 'OK', class: 'btn-submit'

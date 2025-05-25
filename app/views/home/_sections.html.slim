@@ -1,21 +1,8 @@
 / Hero Section
-section#hero.hero.section.light-background
+section#hero.hero.section.light-background data-controller='items'
   .modal-overlay.d-none
-    = render 'items/add_item_modal'
-  .btn-list data-controller='items'
-    .add-btn data-action='click->items#addItem'
-      .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng mới'
-  .item-list
-    - @items.each do |item|
-      .item data-controller='items' data-action='click->items#openEditItem' data-items-id-param=item.id
-        .title-price
-          .title = item.name
-          .price = "SL: #{item.quantity}"
-        = image_tag item.image if item.image.attached?
-    - if @items.size%4 != 0
-      - (4 - @items.size%4).times do
-        .item-blank
-          .title-price
-            .title = ''
-            .price = ''
-          = image_tag ''
+  - if page_items?
+    .btn-list
+      .add-btn data-action='click->items#addItem' data-items-category-param=params[:category]
+        .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng mới'
+  = render 'items/item_list', items: @items

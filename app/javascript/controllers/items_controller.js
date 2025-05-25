@@ -7,6 +7,10 @@ export default class extends Controller {
     "imgPreview"
   ]
 
+  quantityClick(event) {
+    event.stopPropagation();
+  }
+
   delete(event) {
     event.preventDefault();
     const id = event.target.dataset.id;
@@ -20,6 +24,11 @@ export default class extends Controller {
 
   addItem() {
     document.querySelector(".modal-overlay").classList.remove("d-none")
+    fetch(`/items/ajax_open_add/${event.params.category}`)
+      .then(response => response.text())
+      .then(html => {
+        document.querySelector(".modal-overlay").innerHTML = html
+      })
   }
 
   openEditItem() {
@@ -64,6 +73,7 @@ export default class extends Controller {
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("modal-overlay") && !document.querySelector(".modal-overlay").classList.contains("d-none")) {
         document.querySelector(".modal-overlay").classList.add("d-none")
+        // document.querySelectorAll(".add-items-modal").forEach(modal => modal.remove())
       }
     })
   }

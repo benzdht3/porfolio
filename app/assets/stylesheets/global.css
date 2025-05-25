@@ -244,13 +244,8 @@ body {
 .navmenu a:hover,
 .navmenu .active,
 .navmenu .active:focus {
+  background-color: var(--accent-color);
   color: var(--nav-mobile-background-color);
-}
-
-.navmenu a:hover .navicon,
-.navmenu .active .navicon,
-.navmenu .active:focus .navicon {
-  color: var(--accent-color);
 }
 
 .navmenu .active .toggle-dropdown,
