@@ -1,5 +1,6 @@
-section#hero.hero.section.light-background
+section#hero.hero.section.light-background data-controller='items' class=('lock-page' if current_user.blank?)
   .modal-overlay class=('d-none' unless current_user.blank?)
+    = render 'sessions/new' if current_user.blank?
   .date-time-select-container
     = form_with url: revenue_path, method: :get, scope: :revenue, class: 'revenue-form' do |f|
       .revenue-form-group
