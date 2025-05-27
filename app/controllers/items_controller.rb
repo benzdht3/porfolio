@@ -34,7 +34,11 @@ class ItemsController < ApplicationController
 
   def update_quantity
     @item = Item.find(params[:id])
-    @item.update(quantity: @item.quantity + params[:quantity].to_i)
+    if admin?
+      @item.update(quantity: @item.quantity + params[:quantity].to_i)
+    else
+      @item.update(quantity: @item.quantity - params[:quantity].to_i)
+    end
 
     redirect_to items_path(category: @item.category)
   end

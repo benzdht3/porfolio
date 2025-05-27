@@ -1,4 +1,4 @@
-.item-list
+.item-list class=('lock-page' if current_user.blank?)
   - items.each do |item|
     .item data-controller='items' data-action='click->items#openEditItem' data-items-id-param=item.id
       .title-price
@@ -6,10 +6,16 @@
         .price = "SL: #{item.quantity}"
       = image_tag item.image if item.image.attached?
       .quantity-btn data-action='click->items#quantityClick' data-items-id-param=item.id
-        = form_with url: items_update_quantity_path(item.id), method: :patch, class: 'quantity-form' do |f|
-          = f.number_field :quantity, placeholder: '+/- số lượng'
-          .quantity-submit
-            = f.submit 'Sửa SL', class: 'quantity-submit'
+        - if admin?
+          = form_with url: items_update_quantity_path(item.id), method: :patch, class: 'quantity-form' do |f|
+            = f.number_field :quantity, placeholder: '+/- số lượng'
+            .quantity-submit
+              = f.submit 'Sửa SL', class: 'quantity-submit'
+        - else
+          = form_with url: items_update_quantity_path(item.id), method: :patch, class: 'quantity-form' do |f|
+            = f.number_field :quantity, placeholder: 'Nhập số bán', min: 1, max: item.quantity, value: 1
+            .quantity-submit
+              = f.submit 'Bán', class: 'quantity-submit'
   - if items.size%4 != 0
     - (4 - items.size%4).times do
       .item-blank

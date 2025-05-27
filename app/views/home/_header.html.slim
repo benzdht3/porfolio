@@ -20,3 +20,7 @@ header#header.header.light-background.d-flex.flex-column
         = link_to items_path('topping'), id: 'topping', data: { controller: 'header' } do
           i.bi.bi-egg-fried.navicon
           | Topping
+      li class=('d-none' if current_user.blank?)
+        = link_to logout_path, method: :delete do
+          i.bi.bi-box-arrow-right.navicon
+          | Đăng xuất

@@ -1,0 +1,8 @@
+.new-session-modal.unlock-page
+  = form_with scope: :session, url: login_path, method: :post, class: 'new-session-form' do |f|
+    .input-container
+      = f.text_field :username, placeholder: 'Tên đăng nhập'
+    .input-container
+      = f.password_field :password, placeholder: 'Mật khẩu'
+    .submit-container
+      = f.submit 'Đăng nhập', class: 'session-submit-btn'

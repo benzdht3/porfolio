@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  get '/login', to:'sessions#new'
+  post '/login', to:'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
   get "items/ajax_open_add/:category" => "items#ajax_open_add", as: :items_ajax_open_add
   get "items/ajax_open_edit/:id" => "items#ajax_open_edit", as: :items_ajax_open_edit
 
