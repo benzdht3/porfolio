@@ -29,3 +29,9 @@
 
 en:
   hello: "Hello world"
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+    month_names: [~, "1", "2", ..., "12"]

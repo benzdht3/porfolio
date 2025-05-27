@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_25_132845) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_27_121425) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,6 +50,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_25_132845) do
     t.decimal "cost"
   end
 
+  create_table "revenues", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "cost"
+    t.decimal "profit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_revenues_on_item_id"
+    t.index ["user_id"], name: "index_revenues_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
@@ -60,4 +73,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_25_132845) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "revenues", "items"
+  add_foreign_key "revenues", "users"
 end

@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   delete "items/destroy/:id" => "items#destroy", as: :items_destroy
   patch "items/:id" => "items#update", as: :items_update
   patch "items/update_quantity/:id" => "items#update_quantity", as: :items_update_quantity
+
+  get "revenue(/:parameters)" => "revenue#index", as: :revenue
 end

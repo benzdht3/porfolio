@@ -1,0 +1,28 @@
+section#hero.hero.section.light-background
+  .modal-overlay class=('d-none' unless current_user.blank?)
+  .date-time-select-container
+    = form_with url: revenue_path, method: :get, scope: :revenue, class: 'revenue-form' do |f|
+      .revenue-form-group
+        .label-container
+          = f.label :from, 'Từ'
+          | &nbsp
+        .date-time-select
+          = f.datetime_select :from, start_year: 2025, end_year: Date.today.year, selected: @from_date, format: "%d/%m/%Y"
+      .revenue-form-group
+        .label-container
+          = f.label :to, "Đến"
+          | &nbsp
+        .date-time-select
+          = f.datetime_select :to, start_year: 2025, end_year: Date.today.year, selected: @to_date, format: "%d/%m/%Y"
+      .revenue-form-group
+        .label-container
+          = f.label :user_id, 'Nhân viên'
+          | &nbsp
+        .staff-select
+          = f.select :user_id, @staffs.map { |staff| [staff.username, staff.id] }, { include_blank: 'Tất cả', selected: @user_id }
+      .revenue-form-group
+        = f.submit "Lưu", class: 'submit-btn'
+    .revenue-form.total-revenue
+      | Doanh thu: #{number_with_delimiter(@total_revenue, delimiter: ',')}
+
+  = render 'revenue/revenue_list', revenues: @revenues

@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
     if admin?
       @item.update(quantity: @item.quantity + params[:quantity].to_i)
     else
+      sell_item
       @item.update(quantity: @item.quantity - params[:quantity].to_i)
     end
 
@@ -54,6 +55,17 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def sell_item
+    Revenue.create(
+      user_id: current_user.id,
+      item_id: @item.id,
+      quantity: params[:quantity].to_i,
+      price: @item.price,
+      cost: @item.cost,
+      profit: @item.price - @item.cost
+    )
+  end
 
   def item_params
     @item_params ||= params.require(:item).permit(:name, :cost, :quantity, :image, :price, :category)

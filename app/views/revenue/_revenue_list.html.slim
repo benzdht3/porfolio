@@ -1,0 +1,19 @@
+.revenue-list-container
+  .revenue-list-header
+    .revenue-list-header-item
+      | Thời gian
+    .revenue-list-header-item
+      | Dịch vụ
+    .revenue-list-header-item
+      | Giá bán
+    .revenue-list-header-item
+      | Số lượng
+    .revenue-list-header-item
+      | Tổng tiền
+  - @revenues.each do |revenue|
+    .revenue-list-header
+      .revenue-list-header-item = revenue.created_at.strftime('%d/%m/%Y %H:%M')
+      .revenue-list-header-item = revenue.item.name
+      .revenue-list-header-item = number_with_delimiter(revenue.item.price, delimiter: ',')
+      .revenue-list-header-item = revenue.quantity
+      .revenue-list-header-item = number_with_delimiter(revenue.total_price, delimiter: ',')

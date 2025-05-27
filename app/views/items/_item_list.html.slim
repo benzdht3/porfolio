@@ -1,6 +1,6 @@
 .item-list class=('lock-page' if current_user.blank?)
   - items.each do |item|
-    .item data-controller='items' data-action='click->items#openEditItem' data-items-id-param=item.id
+    .item data-controller='items' data-action="#{admin? ? 'click->items#openEditItem' : ''}" data-items-id-param=item.id
       .title-price
         .title = item.name
         .price = "SL: #{item.quantity}"

@@ -1,0 +1,63 @@
+.date-time-select-container {
+  display: flex;
+  justify-content: space-between;
+  .revenue-form {
+    margin: 10px;
+    background-color: #ddd;
+    border-radius: 8px;
+    width: 25%;
+    padding: 0 10px;
+    &.total-revenue {
+      height: 50px;
+      align-content: center;
+      font-weight: bold;
+    }
+    .revenue-form-group {
+      display: flex;
+      width: 100%;
+      padding: 10px 0;
+      .label-container {
+        min-width: 20%;
+      }
+      .staff-select {
+        display: flex;
+        width: 69%;
+        justify-content: center;
+      }
+      &:last-of-type {
+        justify-content: center;
+        .submit-btn {
+          background-color: pink;
+          border: none;
+          border-radius: 8px;
+          width: 40%;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 2px;
+        padding: 0 2px;
+      }
+
+      select::-ms-expand {
+        display: none;
+      }
+    }
+  }
+}
+
+.revenue-list-container {
+  margin: 10px;
+  .revenue-list-header {
+    display: flex;
+    border-bottom: 1px solid;
+    .revenue-list-header-item {
+      width: 20%;
+      border-right: 1px solid;
+    }
+  }
+}
