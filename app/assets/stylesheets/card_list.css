@@ -94,7 +94,7 @@
 .sell-list {
   border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   right: 0;
-  width: 20%;
+  width: 18%;
   height: 100%;
   position: fixed;
   top: 0;
