@@ -1,28 +1,32 @@
 header#header.header.light-background.d-flex.flex-column
 
   .profile-img
-    = image_tag 'nkt.jpg', class: 'img img-fluid rounded-circle', alt: 'Tian'
+    = image_tag 'nkt.jpg', class: 'img img-fluid rounded-circle', alt: 'NKT'
 
   = link_to root_path, class: 'a logo d-flex align-items-center justify-content-center' do
     h1.sitename NKT
 
   nav#navmenu.navmenu
-    ul data-controller='header' data-header-category-value=params[:category]
+    ul data-controller='header' data-header-category-value=params[:category] data-header-controller-value=params[:controller]
       li
-        = link_to items_path('drink'), id: 'drink', data: { controller: 'header' } do
+        = link_to root_path, id: 'all' do
+          i.bi.bi-box.navicon
+          | Tất cả
+      li
+        = link_to items_path('drink'), id: 'drink' do
           i.bi.bi-cup-straw.navicon
           | Nước uống
       li
-        = link_to items_path('food'), id: 'food', data: { controller: 'header' } do
+        = link_to items_path('food'), id: 'food' do
           i.bi.bi-fork-knife.navicon
           | Thức ăn
       li
-        = link_to items_path('topping'), id: 'topping', data: { controller: 'header' } do
+        = link_to items_path('topping'), id: 'topping' do
           i.bi.bi-egg-fried.navicon
           | Topping
       - active = params[:controller] == 'revenue'
       li
-        = link_to revenue_path, id: 'revenue', data: { controller: 'header' }, class: ('active' if active) do
+        = link_to revenue_path, id: 'revenue', class: ('active' if active) do
           i.bi.bi-cash-coin.navicon
           | Doanh thu
       - if current_user.present?

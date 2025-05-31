@@ -90,3 +90,53 @@
     }
   }
 }
+
+.sell-list {
+  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  right: 0;
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  .sell-item {
+    display: flex;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    height: 30px;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-between;
+    .bi-x-circle-fill:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+    .sell-item-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .sell-btn {
+    padding: 5px 10px;
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    .content {
+      height: 100%;
+      border-radius: 8px;
+      background-color: pink;
+      align-content: center;
+      text-align: center;
+      border: 1px solid #ddd;
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+        border: 1px solid black;
+      }
+    }
+  }
+}

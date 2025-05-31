@@ -33,12 +33,16 @@ class ItemsController < ApplicationController
   end
 
   def update_quantity
-    @item = Item.find(params[:id])
     if admin?
+      @item = Item.find(params[:id])
       @item.update(quantity: @item.quantity + params[:quantity].to_i)
     else
-      sell_item
-      @item.update(quantity: @item.quantity - params[:quantity].to_i)
+      items = params[:items]
+      items.each do |item_param|
+        item = Item.find(item_param[:id])
+        sell_item(item, item_param[:quantity])
+        item.update(quantity: item.quantity - item_param[:quantity].to_i)
+      end
     end
 
     redirect_to items_path(category: @item.category)
@@ -56,14 +60,14 @@ class ItemsController < ApplicationController
 
   private
 
-  def sell_item
+  def sell_item(item, quantity)
     Revenue.create(
       user_id: current_user.id,
-      item_id: @item.id,
-      quantity: params[:quantity].to_i,
-      price: @item.price,
-      cost: @item.cost,
-      profit: @item.price - @item.cost
+      item_id: item.id,
+      quantity: quantity.to_i,
+      price: item.price,
+      cost: item.cost,
+      profit: item.price - item.cost
     )
   end
 

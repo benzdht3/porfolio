@@ -7,3 +7,6 @@ section#hero.hero.section.light-background data-controller='items' class=('lock-
       .add-btn data-action='click->items#addItem' data-items-category-param=params[:category]
         .content.bi.bi-plus-circle-fill.navicon = '   Thêm hàng mới'
   = render 'items/item_list', items: @items
+  .sell-list.d-none
+    .sell-btn data-action='click->items#sellConfirm'
+      .content Bán

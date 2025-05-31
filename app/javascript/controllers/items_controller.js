@@ -40,6 +40,45 @@ export default class extends Controller {
       })
   }
 
+  sellItem() {
+    document.querySelector(".sell-list").classList.remove("d-none")
+    document.querySelector(".sell-list").innerHTML += `
+      <div class="sell-item" data-id="${event.params.id}">
+        <div class="bi bi-x-circle-fill" data-action="click->items#removeSellItem"></div>
+        <div class="sell-item-name">&nbsp;${event.params.name}</div>
+        <select class="quantity-select">
+          ${Array.from({ length: event.params.quantity }, (_, i) => i + 1).map(quantity => `<option value="${quantity}">${quantity}</option>`).join('')}
+        </select>
+      </div>
+    `
+  }
+
+  removeSellItem() {
+    const item = event.target.closest(".sell-item")
+    item.remove()
+    if (!document.querySelector(".sell-item")) {
+      document.querySelector(".sell-list").classList.add("d-none")
+    }
+  }
+
+  sellConfirm() {
+    const items = document.querySelectorAll(".sell-item")
+    const itemsArray = Array.from(items).map(item => ({
+      id: item.dataset.id,
+      quantity: item.querySelector(".quantity-select").value
+    }))
+    fetch(`/items/update_quantity`, {
+      method: 'PATCH',
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ items: itemsArray })
+    }).then(res => {
+      window.location.reload();
+    });
+  }
+
   editItem() {
     document.querySelector(`#current-${event.params.input}-name`).classList.add("d-none")
     document.querySelector(`#current-${event.params.input}-icon`).classList.add("d-none")
@@ -73,7 +112,6 @@ export default class extends Controller {
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("modal-overlay") && !document.querySelector(".modal-overlay").classList.contains("d-none")) {
         document.querySelector(".modal-overlay").classList.add("d-none")
-        // document.querySelectorAll(".add-items-modal").forEach(modal => modal.remove())
       }
     })
   }
