@@ -6,7 +6,7 @@ class RevenueController < ApplicationController
       date_time_to = "#{revenue_params['to(3i)']}/#{revenue_params['to(2i)']}/#{revenue_params['to(1i)']} #{revenue_params['to(4i)']}:#{revenue_params['to(5i)']}:00"
       created_at = Time.zone.parse(date_time_from)
       created_to = Time.zone.parse(date_time_to)
-      @revenues = Revenue.where(created_at: created_at..created_to)
+      @revenues = Revenue.where(created_at: created_at..created_to, user_id: revenue_params['user_id'])
       @from_date = created_at
       @to_date = created_to
       @user_id = revenue_params['user_id']
