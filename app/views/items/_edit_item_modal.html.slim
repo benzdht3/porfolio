@@ -12,14 +12,14 @@
       = f.text_field :name, placeholder: 'Tên', class: 'd-none', id: 'current-name-input'
     .add-content
       #current-cost-icon-hidden.item-edit-hidden.bi.bi-pencil.navicon
-      #current-cost-name.item-name = "Giá bán: #{number_with_delimiter(item.cost, delimiter: ',')}"
+      #current-cost-name.item-name = "Giá nhập: #{number_with_delimiter(item.cost, delimiter: ',')}"
       #current-cost-icon.item-edit.bi.bi-pencil.navicon data-action="click->items#editItem" data-items-input-param="cost"
       = f.number_field :cost, placeholder: 'Giá nhập', class: 'd-none', id: 'current-cost-input'
     .add-content
       #current-price-icon-hidden.item-edit-hidden.bi.bi-pencil.navicon
-      #current-price-name.item-name = "Giá nhập: #{number_with_delimiter(item.price, delimiter: ',')}"
+      #current-price-name.item-name = "Giá bán: #{number_with_delimiter(item.price, delimiter: ',')}"
       #current-price-icon.item-edit.bi.bi-pencil.navicon data-action="click->items#editItem" data-items-input-param="price"
-      = f.number_field :price, placeholder: 'Giá nhập', class: 'd-none', id: 'current-price-input'
+      = f.number_field :price, placeholder: 'Giá bán', class: 'd-none', id: 'current-price-input'
     .submit-btns
       .add-submit
         = link_to 'Xóa', '#', data: { action: 'click->items#delete', id: @item.id }, class: 'btn-submit'
