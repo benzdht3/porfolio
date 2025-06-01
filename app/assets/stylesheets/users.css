@@ -7,10 +7,12 @@
 }
 
 .new-session-modal {
+  position: relative;
+  bottom: 1300px;
   border-radius: 8px;
   background-color: white;
   z-index: 2;
-  height: 30%;
+  height: 300px;
   width: 40%;
   .new-session-form {
     height: 100%;
