@@ -7,8 +7,8 @@
 }
 
 .new-session-modal {
-  position: relative;
-  bottom: 1300px;
+  position: absolute;
+  top: 300px;
   border-radius: 8px;
   background-color: white;
   z-index: 2;
